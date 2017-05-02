@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  templateUrl: './inscription.component.html',
 })
-export class AppComponent {
+export class InscriptionComponent {
   // title = 'app works!';
 }
