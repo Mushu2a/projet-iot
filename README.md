@@ -5,6 +5,12 @@
 - Beck Aloïs
 - Lastennet Loïc
 
+## Installation
+```bash
+sudo npm install -g angular-cli
+npm install
+```
+
 ## Lancer en production
 
 ```bash
