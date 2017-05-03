@@ -1,0 +1,148 @@
+/*CSS CLAVIER */
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Verdana, Sans-Serif;
+    background: #ffd6b6;
+}
+#clavier {
+    display: none;
+}
+#keyboard {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+#keyboard li {
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #f9f9f9;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+.capslock, .tab, .left-shift {
+   clear: left;
+}
+#keyboard .tab, #keyboard .delete {
+    width: 70px;
+}
+#keyboard .capslock {
+    width: 80px;
+}
+#keyboard .return {
+    width: 77px;
+}
+#keyboard .left-shift {
+    width: 95px;
+}
+#keyboard .right-shift {
+    width: 109px;
+}
+.lastitem {
+    margin-right: 0;
+}
+.go {
+    background-color: #ea7362 !important;
+    color:white;
+    width: 100px !important;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+#keyboard .space {
+    clear: left;
+    width: 681px;
+}
+.on {
+    display: none;
+}
+#keyboard li:hover {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    border-color: #e5e5e5;
+    cursor: pointer;
+}
+
+/* CSS Perso */
+#btn-admin {
+    right: 5px;
+    top: 5px;
+    position: absolute;
+}
+#go-scan, #go-signin {
+    padding: 15px;
+    width: 48.3%;
+    margin-right: 5px;
+}
+#go-scan {
+    margin-left: 5px;
+}
+
+.btn-warning {
+    background-color: #b74242;
+}
+.btn-warning:hover {
+    background-color: #5c2626;
+}
+.btn-primary {
+    background-color: #ea7362;
+    border-color: #ea7362;
+}
+.btn-primary:hover, .btn-primary:link, .btn-primary:focus{
+    background-color: #b74242;
+    border-color: #b74242;
+}
+.btn-info {
+    background-color: #5c2626;
+    border-color: #5c2626;
+}
+
+.qt-buttons {
+    width: 20px;
+    height: 40px;
+    background: #ea7362;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    z-index: 100;
+    color: #fff;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.qt-buttons span {
+    position: relative;
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 400;
+    float: left;
+    cursor: pointer;
+    padding: 1px 0 0 0;
+}
+
+img {
+  cursor: pointer !important;
+}
+
+a,
+a:hover,
+a:active,
+a:focus{
+  text-decoration: none !important;
+}
