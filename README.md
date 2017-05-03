@@ -6,12 +6,15 @@ npm install
 ```
 
 ## Lancement
-Dans un terminal
-```bash
-electron . 
-```
+Dans plusieurs terminals
 
-Dans un autre
+1 - le serveur node
+
 ```bash
 node server.js
+```
+2 - electron
+
+```bash
+electron . 
 ```
