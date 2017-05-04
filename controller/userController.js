@@ -1,27 +1,59 @@
 var SerialPort = require('serialport');
 var request = require('request');
 
-var port = new SerialPort('/dev/tty.usbmodem1421', {
+var port = new SerialPort('/dev/tty.usbmodem1411', {
     baudRate: 9600,
-    parser: SerialPort.parsers.readline("\n")
+    parser: SerialPort.parsers.readline("\n"),
+    autoOpen: false
 });
 
-
-// open errors will be emitted as an error event
-// port.on('error', function(err) {
-//     console.log('Error: ', err.message);
+// port.on('data', function (data) {
+//     lecture(data);
+//     console.log("lecture");
+//     console.log(data);
+//     return data;
 // });
+var count = 0;
+var card = "";
+var port = null;
+function lecture (callback) {
+    count = 0;
+    port = new SerialPort('/dev/tty.usbmodem1411', {
+        baudRate: 9600,
+        parser: SerialPort.parsers.readline("\n"),
+        autoOpen: false
+    });
+    port.open(function () {
+        console.log('open');
+    });
+    port.on('data', function(data) {
+        count++;
+        console.log('data received: ' + data);
+        if(count == 3) {
+            card = data;
+            port.close(function () {
+                console.log('closing');
+                port = null;
+                return callback(true, card);
+            });
+        }
+    });
+}
 
-// app.get('/', function (req, res) {
-//     console.log("toto");
-//     port.write("toto");
-//     port.on('data', function (data) {
-//         res.send(data);
-//
-//         port.close();
-//         console.log('Data: ' + data);
-//     });
-// });
+function ecriture (data, callback) {
+    port = new SerialPort('/dev/tty.usbmodem1411', {
+        baudRate: 9600,
+        parser: SerialPort.parsers.readline("\n"),
+        autoOpen: false
+    });
+    port.open(function () {
+        console.log('open');
+        port.write(data);
+        return callback(true)
+    });
+}
+
+
 exports.accueil = function (req, res) {
     res.render('user/accueil');
 };
@@ -45,4 +77,17 @@ exports.capsuleStep = function (req, res) {
 
 exports.inscription = function (req, res) {
     res.render('user/inscription');
+};
+
+exports.getCard = function (req, res) {
+    lecture(function (ok, card) {
+        if(ok) {
+            console.log(card);
+            res.status(200).json({card: card});
+        }
+    });
+};
+
+exports.getCapsule = function (req, res) {
+    console.log(req.params);
 };

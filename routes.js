@@ -8,6 +8,8 @@ module.exports = function (app) {
     app.get('/capsule', userController.capsule);
     app.get('/capsule/:id', userController.capsuleStep);
     app.get('/inscription', userController.inscription);
+    app.get('/card', userController.getCard);
+    app.get('/getcapsule', userController.getCapsule);
 
 
     // Admin

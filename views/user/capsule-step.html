@@ -9,3 +9,30 @@
         <a class="btn btn-info" href="/">Retour</a>
     </div>
 </div>
+
+<script>
+    $.ajax({
+        url: "/card",
+        type: "GET",
+        success: function (response, statut) {
+            console.log("success");
+            $("#loader").toggleClass("fa-spinner fa-check fa-pulse");
+            console.log(response.card); // La carte
+            let card = response.card;
+            let prenom = $("#prenom").val();
+            let nom = $("#nom").val();
+
+            // Faire requete AJAX pour login ici
+
+            // On fait tourner le moteur
+            $.ajax({
+                url: "/getcapsule/",
+                method: "GET"
+            })
+        },
+        error: function (resultat, statut, err) {
+            console.log("error");
+            // Jamais d'erreur ici
+        }
+    });
+</script>
