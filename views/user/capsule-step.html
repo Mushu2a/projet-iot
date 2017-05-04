@@ -17,17 +17,21 @@
         success: function (response, statut) {
             console.log("success");
             $("#loader").toggleClass("fa-spinner fa-check fa-pulse");
-            console.log(response.card); // La carte
-            let card = response.card;
-            let prenom = $("#prenom").val();
-            let nom = $("#nom").val();
+            var card = response.card;
+            console.log(card);
 
             // Faire requete AJAX pour login ici
 
             // On fait tourner le moteur
             $.ajax({
-                url: "/getcapsule/",
-                method: "GET"
+                url: "/getcapsule/l",
+                method: "GET",
+                success: function (response, status) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response);
+                }
             })
         },
         error: function (resultat, statut, err) {

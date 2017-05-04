@@ -40,17 +40,35 @@ function lecture (callback) {
     });
 }
 
-function ecriture (data, callback) {
-    port = new SerialPort('/dev/tty.usbmodem1411', {
-        baudRate: 9600,
-        parser: SerialPort.parsers.readline("\n"),
-        autoOpen: false
+
+function ecriture (ladata, callback) {
+    ports = new SerialPort('/dev/tty.usbmodem1411', {
+        baudRate: 9600
     });
-    port.open(function () {
-        console.log('open');
-        port.write(data);
-        return callback(true)
+    ports.on('data', function(data) {
+        console.log('data received: ' + data);
+        ports.write(ladata+"X", function (err) {
+            ports.close(function () {
+                callback(true);
+            });
+        });
     });
+    ports.on("open", function () {
+
+    });
+
+
+    // ports.write("k", function (data) {
+    //     console.log("ok");
+    //     // port.close(function () {
+    //     //     console.log('closing');
+    //     //     port = null;
+    //     //     return callback(true);
+    //     // });
+    // });
+
+
+
 }
 
 
@@ -63,15 +81,13 @@ exports.capsule = function (req, res) {
 };
 
 exports.capsuleStep = function (req, res) {
-    console.log(req.params.id);
-
-    port.on('data', function (data) {
-        port.close();
-
-        request('http://www.google.com', function (err, response, body) {
-           console.log(err);
-        });
-    });
+    // port.on('data', function (data) {
+    //     port.close();
+    //
+    //     request('http://www.google.com', function (err, response, body) {
+    //        console.log(err);
+    //     });
+    // });
     res.render('user/capsule-step');
 };
 
@@ -86,8 +102,13 @@ exports.getCard = function (req, res) {
             res.status(200).json({card: card});
         }
     });
+
 };
 
 exports.getCapsule = function (req, res) {
-    console.log(req.params);
+    ecriture(req.params.id, function (ok) {
+        if (ok) {
+            res.status(200).json();
+        }
+    });
 };
