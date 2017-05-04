@@ -6,9 +6,9 @@ $(document).ready( function () {
     });
 
     //Validation
-    $('.sub').click(function(){
+    /*$('.sub').click(function(){
         window.location.href = "scan.html";
-    });
+    });*/
 
     //Selecteur
     var $writePrenom = $('.write#prenom');

@@ -3,7 +3,6 @@
     <h1 class="text-center">Inscription</h1>
     <p> Veuillez entrer votre nom et prénom s'il vous plait </p>
 
-    <input type="hidden" name="card" value="">
     <div class="form-group">
         <input class="form-control write" type="text" id="prenom" placeholder="PRENOM">
     </div>
@@ -57,7 +56,7 @@
                     <i class="fa fa-spinner fa-pulse fa-5x fa-fw" style="color: #b74242" id="loader"></i>
                 </div>
                 <div class="modal-footer">
-                    <a type="button" class="btn btn-default" href="/">Annuler</a>
+                    <a type="button" class="btn btn-default" href="/inscription">Annuler</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -65,7 +64,7 @@
     <script>
         $("button").click(function (e) {
             e.preventDefault();
-            if($("#prenom").val() != "" && $("#nom").val()) {
+            if($("#prenom").val() != "" && $("#nom").val() != '') {
                 $("#modal").modal();
                 $.ajax({
                     url: "/card",
@@ -77,22 +76,29 @@
                         let card = response.card;
                         let prenom = $("#prenom").val();
                         let nom = $("#nom").val();
+                        var person = {
+                                    lastname: $("#prenom").val(),
+                                    firstname: $("#nom").val(),
+                                    nCarte: 'tototatasuper'
+                                };
 
                         $.ajax({
-                            url: "http://localhost:8080/user/create",
-                            method: "POST",
-                            data : "prenom="+prenom+"&nom="+nom+"&card="+card,
+                            url: "http://geniuscap.pe.hu/user/create",
+                            type: 'POST',
+                            contentType: 'application/json; charset=utf-8',
                             dataType: 'json',
-                            headers: { "Content-Type":"application/json"},
-                            success: function (response, statut) {
+                            data: JSON.stringify({lastname:'fgghtr',firstname:'fggrd',nCarte:'02 0hs 03 AA'}),
+                            success: function (response) {
                                 console.log(response);
+                                $('#output').html(response);
                             },
-                            error: function (resultat, statut, err) {
-                                console.log(resultat);
-                            }
+                            error: function (response) {
+                                    console.log(response);
+                                $('#output').html('Erreur !');
+                            },
                         });
                         // Faire requete AJAX pour inscription ici
-                    },
+                   },
                     error: function (resultat, statut, err) {
                         console.log("error");
                         // Jamais d'erreur ici
@@ -100,6 +106,6 @@
 
                 });
             }
-        })
+        });
     </script>
 </div>

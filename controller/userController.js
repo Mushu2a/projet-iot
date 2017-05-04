@@ -79,6 +79,11 @@ exports.inscription = function (req, res) {
     res.render('user/inscription');
 };
 
+/*exports.inscriptionStep = function (req, res) {
+    console.log(req.params);
+    res.render('user/inscription-step', {lastname: req.params.lastname, firstname: req.params.firstname});
+};*/
+
 exports.getCard = function (req, res) {
     lecture(function (ok, card) {
         if(ok) {

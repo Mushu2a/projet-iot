@@ -1,0 +1,34 @@
+<div class="container">
+    <h1 class="text-center">Passer la carte étudiante</h1>
+
+    <input type="hidden" name="card" value="">
+    <div class="col-xs-12 text-center" style="margin-top: 50px">
+        <i class="fa fa-spinner fa-pulse fa-5x fa-fw" style="color: #b74242"></i>
+    </div>
+
+    <div class="pull-left" style="margin-top: 35px">
+        <a class="btn btn-info" href="/">Retour</a>
+    </div>
+</div>
+<script>
+   /* $(document).ready( function (){
+        while($('input[name="card"]').val() == ''){
+            $.ajax({
+                    url: "/card",
+                    type: "GET",
+                    success: function (response, statut) {
+                        console.log("success");
+                        console.log(response.card); // La carte
+                        let card = response.card;
+                        let prenom = $("#prenom").val();
+                        let nom = $("#nom").val();
+                    },
+                    error: function (resultat, statut, err) {
+                        console.log("error");
+                        // Jamais d'erreur ici
+                    }
+                });
+         }
+
+    });*/
+</script>
