@@ -1,0 +1,42 @@
+<div class="container">
+    <h1 class="text-center">Passer la carte étudiante</h1>
+
+    <div class="col-xs-12 text-center" style="margin-top: 50px">
+        <i class="fa fa-spinner fa-pulse fa-5x fa-fw" style="color: #b74242" id="loader"></i>
+    </div>
+
+    <div class="pull-left" style="margin-top: 35px">
+        <a class="btn btn-info" href="/">Retour</a>
+    </div>
+</div>
+
+<script>
+    $.ajax({
+        url: "/card",
+        type: "GET",
+        success: function (response, statut) {
+            console.log("success");
+            $("#loader").toggleClass("fa-spinner fa-check fa-pulse");
+            var card = response.card;
+            console.log(card);
+
+            // Faire requete AJAX pour login ici
+
+            // On fait tourner le moteur
+            $.ajax({
+                url: "/getcapsule/l",
+                method: "GET",
+                success: function (response, status) {
+                    console.log(response);
+                },
+                error: function (response) {
+                    console.log(response);
+                }
+            })
+        },
+        error: function (resultat, statut, err) {
+            console.log("error");
+            // Jamais d'erreur ici
+        }
+    });
+</script>

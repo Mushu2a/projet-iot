@@ -80,15 +80,12 @@ exports.capsule = function (req, res) {
     res.render('user/capsule');
 };
 
-exports.capsuleStep = function (req, res) {
-    // port.on('data', function (data) {
-    //     port.close();
-    //
-    //     request('http://www.google.com', function (err, response, body) {
-    //        console.log(err);
-    //     });
-    // });
-    res.render('user/capsule-step');
+exports.capsuleStepR = function (req, res) {
+    res.render('user/capsule-step-right');
+};
+
+exports.capsuleStepL = function (req, res) {
+    res.render('user/capsule-step-left');
 };
 
 exports.inscription = function (req, res) {

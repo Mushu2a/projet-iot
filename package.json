@@ -14,6 +14,7 @@
     "handlebars": "^4.0.8",
     "hbs": "^4.0.1",
     "request": "^2.81.0",
-    "serialport": "^4.0.7"
+    "serialport": "^4.0.7",
+    "sleep": "^5.1.1"
   }
 }

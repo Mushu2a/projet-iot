@@ -2,7 +2,7 @@
     <h1 class="text-center">Passer la carte étudiante</h1>
 
     <div class="col-xs-12 text-center" style="margin-top: 50px">
-        <i class="fa fa-spinner fa-pulse fa-5x fa-fw" style="color: #b74242"></i>
+        <i class="fa fa-spinner fa-pulse fa-5x fa-fw" style="color: #b74242" id="loader"></i>
     </div>
 
     <div class="pull-left" style="margin-top: 35px">
@@ -24,7 +24,7 @@
 
             // On fait tourner le moteur
             $.ajax({
-                url: "/getcapsule/l",
+                url: "/getcapsule/r",
                 method: "GET",
                 success: function (response, status) {
                     console.log(response);
