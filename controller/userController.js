@@ -49,7 +49,7 @@ function ecriture (ladata, callback) {
         console.log('data received: ' + data);
         ports.write(ladata+"X", function (err) {
             ports.close(function () {
-                callback(true);
+                return callback(true);
             });
         });
     });
@@ -110,7 +110,7 @@ exports.getCard = function (req, res) {
 exports.getCapsule = function (req, res) {
     ecriture(req.params.id, function (ok) {
         if (ok) {
-            res.status(200).json();
+            res.status(200).json({cap: req.params.id});
         }
     });
 };

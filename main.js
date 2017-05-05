@@ -9,13 +9,14 @@ app.on('ready', function () {
 
     // Initialize the window to our specified dimensions
     win = new BrowserWindow({
-        // skipTaskbar: true,
-        // autoHideMenuBar: true,
-        width: 480, height: 320});
-
+        skipTaskbar: true,
+        autoHideMenuBar: true,
+        //width: 480, height: 320
+        });
+    win.setFullScreen(true);
 
         win.loadURL("http://localhost:3000");
-        win.webContents.openDevTools();
+        //win.webContents.openDevTools();
 
     // Remove window once app is closed
     win.on('closed', function () {

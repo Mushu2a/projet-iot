@@ -18,7 +18,6 @@
             console.log("success");
             $("#loader").toggleClass("fa-spinner fa-check fa-pulse");
             var card = response.card;
-            console.log(card);
 
             // Faire requete AJAX pour login ici
 
@@ -27,10 +26,25 @@
                 url: "/getcapsule/r",
                 method: "GET",
                 success: function (response, status) {
-                    console.log(response);
+//                    $.ajax({
+//                        url: "http://geniuscap.pe.hu/capsules/take/right",
+//
+//                        type: 'POST',
+//                        contentType: 'application/json; charset=utf-8',
+//                        headers: {
+//                            "card": card
+//                        },
+//                        dataType: 'json',
+//                        success: function (response) {
+//                            console.log('success', response);
+//                        },
+//                        error: function (response) {
+//                            console.log('error', response);
+//                        }
+//                    });
                 },
                 error: function (response) {
-                    console.log(response);
+                    console.log('err', response);
                 }
             })
         },
