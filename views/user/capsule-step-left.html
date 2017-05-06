@@ -27,10 +27,19 @@
                 url: "/getcapsule/l",
                 method: "GET",
                 success: function (response, status) {
-                    console.log(response);
+                    $.ajax({
+                        url:"http://geniuscap.pe.hu/capsules/take/left",
+                        type:"POST",
+                        contentType: 'application/json; charset=utf-8',
+                        beforeSend: function(xhr){
+                            xhr.setRequestHeader("card",card);
+                        },
+                        dataType:"json"
+                        // data:{ email: "XXX", password: "XXX" },
+                    });
                 },
                 error: function (response) {
-                    console.log(response);
+                    console.log('err', response);
                 }
             })
         },
