@@ -26,22 +26,16 @@
                 url: "/getcapsule/r",
                 method: "GET",
                 success: function (response, status) {
-//                    $.ajax({
-//                        url: "http://geniuscap.pe.hu/capsules/take/right",
-//
-//                        type: 'POST',
-//                        contentType: 'application/json; charset=utf-8',
-//                        headers: {
-//                            "card": card
-//                        },
-//                        dataType: 'json',
-//                        success: function (response) {
-//                            console.log('success', response);
-//                        },
-//                        error: function (response) {
-//                            console.log('error', response);
-//                        }
-//                    });
+                    $.ajax({
+                        url:"http://geniuscap.pe.hu/capsules/take/right",
+                        type:"POST",
+                        contentType: 'application/json; charset=utf-8',
+                        beforeSend: function(xhr){
+                            xhr.setRequestHeader("card",card);
+                        },
+                        dataType:"json"
+                        // data:{ email: "XXX", password: "XXX" },
+                    });
                 },
                 error: function (response) {
                     console.log('err', response);
